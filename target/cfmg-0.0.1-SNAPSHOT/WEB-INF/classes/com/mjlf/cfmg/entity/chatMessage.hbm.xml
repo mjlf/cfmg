@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.mjlf.cfmg.entity.ChatMessage" table="chatMessage" catalog="cfmg">
+		<id name="id" type="long" column="id" length="10">
+			<generator class="identity"/>
+		</id>
+		<property name="messagetime" column="messagetime"  not-null="true" type="timestamp"/>
+		<property name="fromUserId" column="fromUser" not-null="true" type="long"/>
+		<property name="state" column="state" not-null="true" type="int"/>
+		<property name="toUserId" column="toUser"  not-null="true" type="long"/>
+		<property name="data" column="data"  not-null="true" type="string"/>
+	</class>
+</hibernate-mapping>

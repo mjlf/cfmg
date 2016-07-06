@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.mjlf.cfmg.entity.LibraryBook" table="librarybook" catalog="cfmg">
+		<id name="id" type="long" column="id" length="10">
+			<generator class="identity"/>
+		</id>
+		<property name="bookUserId" column="bookUserId" length="10" not-null="true" type="long"/>
+		<property name="adminUserId" column="adminUserId" length="10" not-null="true" type="long"/>
+		<property name="libraryId" column="libraryId" length="10" not-null="true" type="long"/>
+		<property name="bookTime" column="bookTime"  not-null="true" type="timestamp"/>
+		<property name="startTime" column="startTime"  not-null="true" type="timestamp"/>
+		<property name="endTime" column="endTime"  not-null="true" type="timestamp"/>
+		<property name="peopleNum" column="peopleNum" length="10" not-null="true" type="int"/>
+		<property name="state" column="state" length="10" not-null="true" type="int"/>
+	</class>
+		
+</hibernate-mapping>

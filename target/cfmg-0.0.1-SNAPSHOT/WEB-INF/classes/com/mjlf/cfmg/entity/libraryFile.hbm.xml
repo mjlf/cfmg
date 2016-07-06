@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.mjlf.cfmg.entity.LibraryFile" table="libraryfile" catalog="cfmg">
+		<id name="id" type="long" column="id" length="10">
+			<generator class="identity"/>
+		</id>
+		<property name="libraryId" column="libraryId" length="10" not-null="true" type="long"/>
+		<property name="fileNowName" column="fileNowName" length="128" not-null="true" type="string"/>
+		<property name="fileName" column="fileName" length="128" not-null="true" type="string"/>
+		<property name="filePath" column="filePath" length="1024" not-null="true" type="string"/>
+		<property name="fileLength" column="fileLength" length="18"  type="long"/>
+		<property name="libraryBookId" column="libraryBookId" length="10"  type="long"/>
+		<property name="fileType" column="fileType" length="128" not-null="true" type="string"/>
+		<property name="uploadUserId" column="uploadUserId" length="10" not-null="true" type="long"/>
+		<property name="uploadTime" column="uploadTime"  not-null="true" type="timestamp"/>
+	</class>
+</hibernate-mapping>

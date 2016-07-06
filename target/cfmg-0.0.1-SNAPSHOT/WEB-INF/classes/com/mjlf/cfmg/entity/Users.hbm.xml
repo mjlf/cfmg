@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.mjlf.cfmg.entity.User" table="users" catalog="cfmg">
+		<id name="id" type="long" column="id" length="10">
+			<generator class="identity"/>
+		</id>
+		<property name="username" column="username" length="30" not-null="true" type="string"/>
+		<property name="password" column="password" length="40" not-null="true" type="string"/>
+		<property name="nickname" column="nickname" length="50" not-null="true" type="string"/>
+		<property name="email" column="email" length="50" not-null="true" type="string"/>
+		<property name="phone" column="phone" length="20" not-null="true" type="string"/>
+		<property name="admin" column="admin" length="2" not-null="true" type="string"/>
+		<property name="isOnline" column="isonline" length="2" not-null="true" type="string"/>
+	</class>
+	
+</hibernate-mapping>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	   
+							http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+							http://www.springframework.org/schema/context
+							http://www.springframework.org/schema/context/spring-context-4.2.xsd
+							http://www.springframework.org/schema/mvc
+							http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
+
+	<!--配置一个viewResolver来处理返回的页面,配置前置和后置 -->
+	<bean id="viewresolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/pages</value>
+		</property>
+		<property name="suffix">
+			<value>.html</value>
+		</property>
+	</bean>
+	<mvc:interceptors>  
+        <mvc:interceptor>  
+            <!-- 需拦截的地址 -->  
+                       
+            <mvc:mapping path="/**/*.do" />  
+    
+            <!-- 需排除拦截的地址 -->  
+            <mvc:exclude-mapping path="/cfmg/index.do"/>
+            <mvc:exclude-mapping path="/cfmg/regist.do"/> 
+            <mvc:exclude-mapping path="/cfmg/findusername.do"/> 
+            <mvc:exclude-mapping path="/cfmg/findphone.do"/> 
+            <mvc:exclude-mapping path="/cfmg/findemail.do"/> 
+            <mvc:exclude-mapping path="/cfmg/login.do"/> 
+            <mvc:exclude-mapping path="/cfmg/findusername.do"/> 
+            <mvc:exclude-mapping path="/cfmg/forgetrepass.do"/> 
+            <mvc:exclude-mapping path="/cfmg/sendmailtoresetpass.do"/>
+            <mvc:exclude-mapping path="/cfmg/logintobook.do"/>
+            <mvc:exclude-mapping path="/cfmg/getuserName.do"/>
+            <mvc:exclude-mapping path="/cfmg/uploadLibraryBookFile.do"/>
+            <mvc:exclude-mapping path="/cfmg/findAllFileByLibraryBook.do"/>
+            <mvc:exclude-mapping path="/cfmg/deleteLibraryBookFile.do"/>
+             <mvc:exclude-mapping path="/cfmg/signIncodepass.do"/>
+            <bean id="loginInterceptor" class="com.mjlf.cfmg.filter.LoginInterceptor" />  
+        </mvc:interceptor>  
+    </mvc:interceptors>  
+	<!-- 扫描注解配置的包 -->
+	<context:component-scan base-package="com.mjlf.*"/>
+	<mvc:annotation-driven />
+	
+	 <!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->  
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" lazy-init="false" />  
+  
+    <!-- 另外最好还要加入DefaultAnnotationHandlerMapping，不然会被 XML或其它的映射覆盖！ -->  
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />  
+    
+	<!-- 支持上传文件 -->  
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>  
+</beans>
