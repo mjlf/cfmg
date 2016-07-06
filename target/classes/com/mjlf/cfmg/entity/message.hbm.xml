@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.mjlf.cfmg.entity.Message" table="message" catalog="cfmg">
+		<id name="id" type="long" column="id" length="10">
+			<generator class="identity"/>
+		</id>
+		<property name="writeTime" column="writeTime"  not-null="true" type="timestamp"/>
+		<property name="userId" column="userId" not-null="true" type="long"/>
+		<property name="info" column="info"  type="string"/>
+	</class>
+</hibernate-mapping>
